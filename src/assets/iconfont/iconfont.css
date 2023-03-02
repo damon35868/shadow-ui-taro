@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("iconfont.ttf?t=1677468466010") format("truetype");
+}
+
+.iconfont {
+  font-family: "sd_iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-a-shuaxin2x:before {
+  content: "\e633";
+}
+
+.icon-xuanzhong:before {
+  content: "\e632";
+}
+
+.icon-a-yijianfankui2x:before {
+  content: "\e62f";
+}
+
+.icon-a-mingshirenzheng2x:before {
+  content: "\e630";
+}
+
+.icon-a-lianxikefu2x:before {
+  content: "\e631";
+}
+
+.icon-a-luyin2x:before {
+  content: "\e624";
+}
+
+.icon-a-jingyin2x:before {
+  content: "\e625";
+}
+
+.icon-a-sousuo2x:before {
+  content: "\e626";
+}
+
+.icon-a-suo2x:before {
+  content: "\e627";
+}
+
+.icon-a-yuyin22x:before {
+  content: "\e628";
+}
+
+.icon-a-guanbi2x:before {
+  content: "\e629";
+}
+
+.icon-a-yuyin2x:before {
+  content: "\e635";
+}
+
+.icon-a-fenxiang2x:before {
+  content: "\e636";
+}
+
+.icon-a-jianpan2x:before {
+  content: "\e637";
+}
+
+.icon-a-zuo2x:before {
+  content: "\e62a";
+}
+
+.icon-a-shang2x:before {
+  content: "\e62b";
+}
+
+.icon-a-you2x:before {
+  content: "\e62c";
+}
+
+.icon-a-xia2x:before {
+  content: "\e62d";
+}
+
+.icon-a-guanbi2x1:before {
+  content: "\e62e";
+}
