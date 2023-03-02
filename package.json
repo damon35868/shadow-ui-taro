@@ -1,6 +1,6 @@
 {
   "name": "shadow-ui-taro",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于taro及react开发的组件库",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/damon35868/use-taro-request.git"
+    "url": "https://github.com/damon35868/shadow-ui-taro"
   },
   "dependencies": {
     "@tarojs/components": "^3.6.2",
