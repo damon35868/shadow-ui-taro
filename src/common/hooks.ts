@@ -7,7 +7,7 @@ import { reLaunch, useDidShow, navigateBack as originNavigateBack, useReachBotto
  * @param pageKey 分页页码的 storeKey(在搜索，切换tab场景中需将页码置为1)
  * @param varFn 变量函数
  */
-export function useLoadMore(model: any, page: number, varFn?) {
+export function useLoadMore(model: any, page: number, varFn?: Function) {
   const { data, run, mutate, loading } = model;
   const { hasNextPage } = data || {};
   page = page === 1 ? 2 : page || 1;

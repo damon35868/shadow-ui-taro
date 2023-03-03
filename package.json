@@ -1,11 +1,13 @@
 {
   "name": "shadow-ui-taro",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "基于taro及react开发的组件库",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "build": "npm run clean && rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "D.M",
@@ -15,14 +17,29 @@
     "url": "https://github.com/damon35868/shadow-ui-taro"
   },
   "dependencies": {
-    "@tarojs/components": "^3.6.2",
-    "@tarojs/taro": "^3.6.2",
-    "@types/react": "^18.0.28",
-    "classnames": "^2.3.2",
-    "react": "^18.2.0",
-    "typescript": "^4.9.5"
+    "postcss": "^8.4.21",
+    "tslib": "^2.5.0"
   },
   "files": [
-    "lib/**/*"
-  ]
+    "dist"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@tarojs/components": "^3.6.2",
+    "@tarojs/taro": "^3.6.2",
+    "@types/react": "^17.0.18",
+    "node-sass": "^8.0.0",
+    "react": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.56.2",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.58.3",
+    "typescript": "^4.3.5"
+  }
 }

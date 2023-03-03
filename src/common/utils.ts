@@ -86,7 +86,7 @@ export const changeNumToHan = (num: number) => {
     let des_i = english.length - 1 - i; // 倒序排列设值
     result = arr2[i] + result;
     let arr1_index = english[des_i];
-    result = arr1[arr1_index] + result;
+    result = arr1[arr1_index as unknown as number] + result;
   }
   result = result.replace(/零(千|百|十)/g, "零").replace(/十零/g, "十"); // 将【零千、零百】换成【零】 【十零】换成【十】
   result = result.replace(/零+/g, "零"); // 合并中间多个零为一个零

@@ -21,3 +21,10 @@ npm install shadow-ui-taro --save
 ```sh
 yarn add shadow-ui-taro
 ```
+
+## Use / 使用
+
+```tsx
+import { BottomModal, Modal, isToday } from "shadow-ui-taro";
+import "shadow-ui-taro/dist/cjs/style.css";
+```
