@@ -9,5 +9,5 @@ export function requestConfig(newConfig: configTypes) {
   if (typeof newConfig !== "object") return;
   Object.assign(config, newConfig);
 
-  console.log(`[配置成功]%c ${newConfig}`, "color: #00CC00");
+  console.log("[配置成功]", newConfig);
 }

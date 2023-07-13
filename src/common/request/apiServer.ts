@@ -22,7 +22,7 @@ export function apiServer({ url, data, method = "POST", coverUrl }: requestProps
       method,
       url: coverUrl || config.baseUrl + (url || ""),
       header: {
-        authorization: getItem(LocalStorageKeys.token) || null
+        authorization: (config.bearerToken ? "Bearer " : "") + getItem(LocalStorageKeys.token) || null
       },
       success: res => {
         const { statusCode } = res;

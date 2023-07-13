@@ -21,7 +21,7 @@ const asyncFn = ({ url, data, method, token }: { url: string; data: any; method:
       data,
       method,
       header: {
-        authorization: token || getItem(LocalStorageKeys.token) || null
+        authorization: (config.bearerToken ? "Bearer " : "") + (token || getItem(LocalStorageKeys.token) || null)
       }
     })
       .then(res => {

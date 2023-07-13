@@ -1,9 +1,9 @@
 {
   "name": "shadow-ui-taro",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "基于taro及react开发的组件库",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/esm/index.js",
+  "module": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist",
@@ -17,6 +17,8 @@
     "url": "https://github.com/damon35868/shadow-ui-taro"
   },
   "dependencies": {
+    "@babel/core": "^7.22.9",
+    "@rollup/plugin-babel": "^6.0.3",
     "jotai": "^2.2.2",
     "postcss": "^8.4.21",
     "taro-hooks": "1.5.10",

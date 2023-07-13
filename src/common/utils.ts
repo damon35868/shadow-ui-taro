@@ -44,7 +44,7 @@ export function getScaleImageURL(urls: string, w: number, h: number) {
 /**
  * @description: 判断是否是今天
  * @param {number} timer 时间戳
- * @return {*}
+ * @return {boolean}
  */
 export function isToday(timer: number | string): boolean {
   return new Date(timer).toDateString() === new Date().toDateString();
@@ -229,4 +229,30 @@ export function routerBack(opt?: any) {
       reLaunch({ url: "/pages/index/index" });
     }
   });
+}
+
+// 生成随机数
+const randomNum = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+export const getRandomColor = (min: number, max: number) => {
+  let r = randomNum(min, max);
+  let g = randomNum(min, max);
+  let b = randomNum(min, max);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+/**
+ * @description: 清楚富文本中的图片、空格等
+ * @param {string} text
+ * @return {*}
+ */
+export function clearRichText(text: string = "") {
+  const text1 = text.replace(/<\/?(img|table)[^>]*>/g, "[图片]"); //去除图片、表格
+  // const text2 = text1.replace(/<\/?(p|em|strong)[^>]*>/g, '')
+  const text2 = text1.replace(/<\/?.+?>/g, ""); //去除标签包裹
+  const text3 = text2.replace(/[ | ]*\n/g, "\n"); //去除行尾空白
+  const text4 = text3.replace(/ /g, ""); //去除空格
+  return text4;
 }

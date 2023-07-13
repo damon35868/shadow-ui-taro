@@ -2,6 +2,7 @@ export interface configTypes {
   baseUrl?: string;
   header?: TaroGeneral.IAnyObject;
   timeout?: number;
+  bearerToken?: boolean;
 }
 
 export interface requestOptions {

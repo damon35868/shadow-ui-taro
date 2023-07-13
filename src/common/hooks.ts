@@ -37,7 +37,9 @@ export function useLoadMore(model: any, page: number, varFn?: Function) {
 }
 
 /**
- * 路由返回
+ * @description: 路由返回
+ * @param {any} opt
+ * @return {*}
  */
 export function navigateBack(opt?: any) {
   originNavigateBack({
