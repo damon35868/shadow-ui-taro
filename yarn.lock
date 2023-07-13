@@ -30,6 +30,13 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
+"@babel/runtime@^7.14.6":
+  version "7.22.6"
+  resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.22.6.tgz#57d64b9ae3cff1d67eb067ae117dac087f5bd438"
+  integrity sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==
+  dependencies:
+    regenerator-runtime "^0.13.11"
+
 "@gar/promisify@^1.0.1", "@gar/promisify@^1.1.3":
   version "1.1.3"
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
@@ -391,6 +398,11 @@ binary-extensions@^2.0.0:
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+blueimp-canvas-to-blob-global@^3.29.1:
+  version "3.29.1"
+  resolved "https://registry.npmmirror.com/blueimp-canvas-to-blob-global/-/blueimp-canvas-to-blob-global-3.29.1.tgz#d447c5ce994b2549d6335d41c3ab5087b96fd5e8"
+  integrity sha512-7iiAoFX7nEdm8H8ErlewkvUvNZTMH47jro1sVOuvzCn3xcfNGsYBItmE/N/tcjADgOvCW9juiU/LFJjHUKw5fw==
+
 boolbase@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
@@ -619,6 +631,14 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
+
+compressorjs-global@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmmirror.com/compressorjs-global/-/compressorjs-global-1.1.2.tgz#d88b387af0619426b4658633e7051ab274a55b6b"
+  integrity sha512-f1p8JE5GcCHvq+WgKOKg8ER2dUU0ziOkS4adeBZhEOJdDk9u4VwI01zuL+Bpgk0CPwVTMOomPDeGfJUcyU4V3A==
+  dependencies:
+    blueimp-canvas-to-blob-global "^3.29.1"
+    is-blob "^2.1.0"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -1210,6 +1230,11 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
+is-blob@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/is-blob/-/is-blob-2.1.0.tgz#e36cd82c90653f1e1b930f11baf9c64216a05385"
+  integrity sha512-SZ/fTft5eUhQM6oF/ZaASFDEdbFVe89Imltn9uZr03wdKMcWNVYSMjQPFtg05QuNkt5l5c135ElvXEQG0rk4tw==
+
 is-builtin-module@^3.1.0:
   version "3.2.1"
   resolved "https://registry.npmjs.org/is-builtin-module/-/is-builtin-module-3.2.1.tgz#f03271717d8654cfcaf07ab0463faa3571581169"
@@ -1287,6 +1312,11 @@ jest-worker@^26.2.1:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jotai@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.npmmirror.com/jotai/-/jotai-2.2.2.tgz#1e181789dcc01ced8240b18b95d9fa10169f9366"
+  integrity sha512-Cn8hnBg1sc5ppFwEgVGTfMR5WSM0hbAasd/bdAwIwTaum0j3OUPqBSC4tyk3jtB95vicML+RRWgKFOn6gtfN0A==
+
 js-base64@^2.4.9:
   version "2.6.4"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
@@ -1333,6 +1363,11 @@ lodash-es@4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
+lodash-wechat@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/lodash-wechat/-/lodash-wechat-1.0.0.tgz#d273d6654a85063cd4af13189987885b8cc44764"
+  integrity sha512-QoUc/QbEXNu1PsoWXRehZnfSZf5VznHRth5iUteq4qdM9myuKlhGIxSrFl9vhtDfqyUVuprPxXFbUGZ3oGM0JQ==
 
 lodash.camelcase@^4.3.0:
   version "4.3.0"
@@ -2117,6 +2152,11 @@ query-string@^7.1.1:
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
 
+querystring@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npmmirror.com/querystring/-/querystring-0.2.1.tgz#40d77615bb09d16902a85c3e38aa8b5ed761c2dd"
+  integrity sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==
+
 quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
@@ -2618,6 +2658,17 @@ tar@^6.0.2, tar@^6.1.11, tar@^6.1.2:
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
+
+taro-hooks@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.npmmirror.com/taro-hooks/-/taro-hooks-1.5.10.tgz#203c09addf5a255aa016dd8770a31bc894fdfc68"
+  integrity sha512-5k61cduhr5WS2Albue57NGl0e+GbpONwWbMfB9S7abHcB+Az4OQOba/jr+TNF5GBJBX1w+b8T/FR66F8ryBG7w==
+  dependencies:
+    "@babel/runtime" "^7.14.6"
+    compressorjs-global "^1.1.2"
+    lodash-wechat "^1.0.0"
+    lodash.uniq "^4.5.0"
+    querystring "^0.2.1"
 
 terser@^5.0.0:
   version "5.16.5"

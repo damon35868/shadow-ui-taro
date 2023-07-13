@@ -1,3 +1,5 @@
+import { clearStorageSync, getStorageSync, removeStorageSync, setStorageSync, reLaunch, showToast, uploadFile, navigateBack } from "@tarojs/taro";
+
 /**
  * 格式化日期
  * @param date
@@ -97,3 +99,134 @@ export const changeNumToHan = (num: number) => {
   result = result.replace(/^一十/g, "十");
   return result;
 };
+
+/**
+ * @description: 是否为空
+ * @param {any} variable
+ * @return {*}
+ */
+export function isEmpty(variable: any) {
+  const emptys = ["", undefined, "undefined", null, "null", false, "false", "{}"];
+  return typeof variable === "object" && variable !== null ? (Object.values(variable).length ? false : true) : emptys.includes(variable) || false;
+}
+
+/**
+ * @description: 扁平化数组
+ * @param {any} arr 原数组
+ * @param {string} key 子集条件key，默认children
+ * @param {boolean} deleteVal 是否删除key
+ * @return {*}
+ */
+export function flatArr(arr: any[], key: string = "children", deleteVal: boolean = true) {
+  return arr.reduce((prev, curr) => {
+    const value = curr[key];
+    if (deleteVal) delete curr[key];
+    prev.push(curr);
+    if (Array.isArray(value) && value.length) {
+      prev.push(...flatArr(value));
+    }
+    return prev;
+  }, []);
+}
+
+/**
+ * @description: 格式化文章内容
+ * @param {*} content
+ * @return {*}
+ */
+export const formatContent = (content: string = "") => {
+  return content
+    .replace(/width=/g, "")
+    .replace(/height=/g, "")
+    .replace(/<img src=/g, '<img width="100%" style="pointer-events:none;" src=')
+    .replace(/class="ql-align-center"/g, 'style="text-align: center" class="ql-align-center"')
+    .replace(/<p>/g, '<p style="margin-bottom: 1em">');
+};
+
+export function toast(title: string, options?: any) {
+  return showToast({ title, ...Object.assign({ icon: "none" }, options) });
+}
+
+/**
+ * @description: 倒计时 -> 秒
+ * @return {*}
+ */
+
+let timer: string | number | NodeJS.Timeout | undefined;
+export function clearCountDown() {
+  timer && clearInterval(timer);
+}
+export async function countDownBySecond(second: number, cb?: (time: number) => any): Promise<boolean> {
+  let secondVal = second;
+  clearCountDown();
+
+  return new Promise(resove => {
+    timer = setInterval(() => {
+      if (secondVal <= 0) {
+        clearInterval(timer);
+        resove(true);
+        cb && cb(0);
+        return;
+      }
+
+      cb && cb(secondVal);
+      console.log("[-二维码倒计时-]", secondVal);
+      secondVal--;
+    }, 1000);
+  });
+}
+
+/**
+ * @description: 统一文件上传器
+ * @param {string} filePath
+ * @return {*}
+ */
+export const uploader = (url: string, filePath: string) => {
+  return new Promise((resove, reject) => {
+    uploadFile({
+      filePath,
+      name: "file",
+      url,
+      header: {
+        authorization: getItem("token") || null
+      },
+
+      success: (res: any) => {
+        const data = res.data ? res.data : res;
+        resove(typeof data === "string" ? JSON.parse(data) : data);
+      },
+      fail: (err: any) => reject(err)
+    });
+  });
+};
+
+/**
+ * localstorage操作
+ */
+export function clearStorage() {
+  return clearStorageSync();
+}
+
+export function removeItem(key: string) {
+  return removeStorageSync(key);
+}
+
+export function getItem(key: string) {
+  return getStorageSync(key);
+}
+
+export function setItem(key: string, data: any) {
+  return setStorageSync(key, data);
+}
+
+/**
+ * 路由返回
+ */
+export function routerBack(opt?: any) {
+  navigateBack({
+    ...opt,
+    fail() {
+      reLaunch({ url: "/pages/index/index" });
+    }
+  });
+}

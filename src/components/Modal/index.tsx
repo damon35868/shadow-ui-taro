@@ -10,13 +10,12 @@ interface ModalProps {
   onCancel?: () => any;
   closeOnClickModal?: boolean;
   cRef?: any;
-  hideClose?: boolean;
   hideBG?: boolean;
   arg?: any;
   children: ReactElement;
 }
 
-export const Modal: FC<ModalProps> = ({ status, setStatus, closeOnClickModal = true, onClose, onCancel, children, cRef, hideBG, hideClose, arg }) => {
+export const Modal: FC<ModalProps> = ({ status, setStatus, closeOnClickModal = true, onClose, onCancel, children, cRef, hideBG, arg }) => {
   const [contentStatus, setContentStatus] = useState(false);
 
   useEffect(() => setContentStatus(status), [status]);
@@ -32,7 +31,8 @@ export const Modal: FC<ModalProps> = ({ status, setStatus, closeOnClickModal = t
       catchMove
       className={classNames("sd_modal", { show: status })}
       onClick={() => {
-        closeOnClickModal && close();
+        if (!closeOnClickModal) return;
+        close();
         onClose && onClose();
         onCancel && onCancel();
       }}
@@ -44,17 +44,6 @@ export const Modal: FC<ModalProps> = ({ status, setStatus, closeOnClickModal = t
         })}
       >
         {children}
-        {/* {!hideClose && (
-          <View
-            className='sd_model-close'
-            onClick={() => {
-              close();
-              onCancel && onCancel();
-            }}
-          >
-            <Text className='iconfont icon-a-guanbi2x sd_model-close-icon' />
-          </View>
-        )} */}
       </View>
     </View>
   );
