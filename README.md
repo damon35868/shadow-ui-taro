@@ -25,6 +25,6 @@ yarn add shadow-ui-taro
 ## Use / 使用
 
 ```tsx
-import { BottomModal, Modal, isToday } from "shadow-ui-taro";
-import "shadow-ui-taro/dist/cjs/style.css";
+import { BottomModal, Modal, isToday, isEmpty, useLoadMore ... } from "shadow-ui-taro";
+import "shadow-ui-taro/dist/esm/style.css";
 ```

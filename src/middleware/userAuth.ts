@@ -67,4 +67,4 @@ class UserAuth {
   }
 }
 
-export default new UserAuth();
+export const userAuth = new UserAuth();

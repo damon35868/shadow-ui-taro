@@ -1,6 +1,6 @@
 {
   "name": "shadow-ui-taro",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "基于taro及react开发的组件库",
   "main": "dist/esm/index.js",
   "module": "dist/cjs/index.js",
