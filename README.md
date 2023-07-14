@@ -25,6 +25,44 @@ yarn add shadow-ui-taro
 ## Use / 使用
 
 ```tsx
-import { BottomModal, Modal, isToday, isEmpty, useLoadMore ... } from "shadow-ui-taro";
+import { BottomModal, Modal, isToday, isEmpty, useLoadMore, ... } from "shadow-ui-taro";
 import "shadow-ui-taro/dist/esm/style.css";
 ```
+
+## Config / 配置
+
+```tsx
+import { globalConfig } from "shadow-ui-taro";
+// 完成配置后将冻结配置，无法修改，请在入口文件初始化一次即可
+globalConfig({
+    request:{
+        ...
+    },
+    middleware:{
+        ...
+    }
+})
+```
+
+## globalConfig 全局配置
+
+| Property     | Type      | Default | Description  |
+| :----------- | :-------- | :------ | :----------- |
+| `log`        | `boolean` | `false` | 配置日志显示 |
+| `request`    | `object`  | `{}`    | 网络请求配置 |
+| `middleware` | `object`  | `{}`    | 中间件配置   |
+
+## 网络请求配置
+
+| Property      | Type      | Default  | Description                |
+| :------------ | :-------- | :------- | :------------------------- |
+| `baseUrl`     | `string`  | `''`     | 基础请求地址               |
+| `header`      | `object`  | `{}`     | 请求头                     |
+| `timeout`     | `number`  | `300000` | 请求超时时间 (毫秒)        |
+| `bearerToken` | `boolean` | `false`  | token 是否添加 bearer 前缀 |
+
+## 中间件配置
+
+| Property   | Type     | Default                                              | Description  |
+| :--------- | :------- | :--------------------------------------------------- | :----------- |
+| `userAuth` | `object` | `{filterKey : {phone: "mobilePhone",info: "name" }}` | 用户权限验证 |

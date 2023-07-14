@@ -1,7 +1,7 @@
 import { request } from "@tarojs/taro";
 import { getItem } from "../utils";
 import { LocalStorageKeys } from "../enums";
-import { config } from "./config";
+import { config } from "../../config/instance";
 
 interface requestProps {
   url?: string;
@@ -20,9 +20,11 @@ export function apiServer({ url, data, method = "POST", coverUrl }: requestProps
     request({
       data,
       method,
-      url: coverUrl || config.baseUrl + (url || ""),
+      timeout: config.request?.timeout,
+      url: coverUrl || config.request?.baseUrl + (url || ""),
       header: {
-        authorization: (config.bearerToken ? "Bearer " : "") + getItem(LocalStorageKeys.token) || null
+        authorization: (config.request?.bearerToken ? "Bearer " : "") + getItem(LocalStorageKeys.token) || null,
+        ...(config.request?.header || {})
       },
       success: res => {
         const { statusCode } = res;

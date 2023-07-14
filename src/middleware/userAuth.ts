@@ -1,5 +1,14 @@
 import { getItem, setItem } from "../common/utils";
 import { LocalStorageKeys } from "../common/enums";
+import { setUserAuth } from "../common";
+import { config } from "../config/instance";
+
+interface UserAuthConfig {
+  filterKey?: {
+    phone: string;
+    info: string;
+  };
+}
 
 enum permissionsType {
   USER = 1,
@@ -7,8 +16,18 @@ enum permissionsType {
 }
 
 class UserAuth {
-  public level = permissionsType.PHONE;
-  public lastCb: Function | undefined;
+  private filterKey = {
+    phone: "mobilePhone",
+    info: "name"
+  };
+  private level = permissionsType.PHONE;
+  private lastCb: Function | undefined;
+  private userInfo = getItem(LocalStorageKeys.userInfo);
+
+  constructor(config: UserAuthConfig | undefined) {
+    const { filterKey } = config || {};
+    filterKey && (this.filterKey = filterKey);
+  }
 
   /**
    * @description: 查看授权
@@ -18,7 +37,8 @@ class UserAuth {
     cb && this.setLastCb(cb);
     const level = lv || this.level;
     const hasAuth = this.getUserPermissions(level);
-    setItem("userAuth", !hasAuth);
+
+    setUserAuth(!hasAuth);
 
     if (hasAuth) {
       if (this.lastCb) {
@@ -46,7 +66,9 @@ class UserAuth {
     const level = lv || this.level;
 
     switch (level) {
-      // case permissionsType.USER: { return this.getUserPermission(); }
+      case permissionsType.USER: {
+        return this.getUserPermission();
+      }
       case permissionsType.PHONE: {
         return this.getPhonePermission();
       }
@@ -57,14 +79,17 @@ class UserAuth {
   }
 
   // 暂时不需要校验用户信息权限
-  // getUserPermission() {
-  // },
+  getUserPermission() {
+    const userInfo = this.userInfo || getItem(LocalStorageKeys.userInfo);
+    const info = userInfo[this.filterKey.info];
+    return !!info;
+  }
 
   public getPhonePermission(): boolean {
-    const userInfo = getItem(LocalStorageKeys.userInfo);
-    const { mobilePhone } = userInfo || {};
+    const userInfo = this.userInfo || getItem(LocalStorageKeys.userInfo);
+    const mobilePhone = userInfo[this.filterKey.phone];
     return !!mobilePhone;
   }
 }
 
-export const userAuth = new UserAuth();
+export const userAuth = new UserAuth(config.middleware?.userAuth);

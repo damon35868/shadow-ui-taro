@@ -1,5 +1,6 @@
 export * from "./hooks";
 export * from "./utils";
 export * from "./request";
-export * from "./state";
+export { useToken, setUserAuth } from "./state";
 export * from "./helper";
+export * from "./log";

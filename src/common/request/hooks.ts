@@ -3,8 +3,8 @@ import { useRequest as useQuery } from "taro-hooks";
 import { BaseOptions, BaseResult, LoadMoreOptions, PaginatedOptionsWithFormat } from "taro-hooks/dist/useRequest/types";
 import { getItem } from "../utils";
 import { LocalStorageKeys } from "../enums";
-import { config } from "./config";
 import { useToken } from "../state";
+import { config } from "../../config/instance";
 
 export interface requestOptions {
   url?: string;
@@ -20,8 +20,10 @@ const asyncFn = ({ url, data, method, token }: { url: string; data: any; method:
       url,
       data,
       method,
+      timeout: config.request?.timeout,
       header: {
-        authorization: (config.bearerToken ? "Bearer " : "") + (token || getItem(LocalStorageKeys.token) || null)
+        authorization: (config.request?.bearerToken ? "Bearer " : "") + (token || getItem(LocalStorageKeys.token) || null),
+        ...(config.request?.header || {})
       }
     })
       .then(res => {
@@ -38,7 +40,6 @@ export const useRequest = (
   { url, data, method = "POST", coverUrl }: requestOptions,
   options?: PaginatedOptionsWithFormat<any, any, any> | BaseOptions<any, any> | LoadMoreOptions<any>
 ): BaseResult<any, any> => {
-  // const reqToken = getItem("token");
   const { token: reqToken } = useToken();
 
   return useQuery(
@@ -51,9 +52,9 @@ export const useRequest = (
           ...data,
           ...payload
         },
-        url: httpUrl || coverUrl || String(config.baseUrl) + url
+        url: httpUrl || coverUrl || String(config.request?.baseUrl) + url
       });
     },
-    { ...(options as any), ready: reqToken && !!config.baseUrl }
+    { ...(options as any), ready: reqToken && !!config.request?.baseUrl }
   );
 };

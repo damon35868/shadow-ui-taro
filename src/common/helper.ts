@@ -16,20 +16,22 @@ class Helper {
     errorText,
     callback,
     showToast = true,
+    onError,
     rule
   }: {
     apiFn: () => Promise<any>;
     text?: string;
     errorText?: string;
     callback?: (res: any) => any;
+    onError?: (err: any) => any;
     showToast?: boolean;
     rule?: () => boolean;
   }) {
     try {
       const res = await apiFn();
 
-      if (rule && !rule()) {
-        throw new Error(res.msg && typeof res.msg === "object" ? res.msg.message : `${text}失败`);
+      if (rule) {
+        if (!rule()) throw new Error(res.msg && typeof res.msg === "object" ? res.msg.message : `${text}失败`);
       } else {
         const { code, message } = res || {};
         if (code === ErrorCode.error) throw new Error(message);
@@ -38,9 +40,10 @@ class Helper {
         }
       }
 
-      showToast && text && toast(`${text}成功`);
       callback && callback(res);
+      showToast && text && toast(`${text}成功`);
     } catch (e: any) {
+      onError && onError(e);
       showToast && toast(errorText || e.message);
     }
   }

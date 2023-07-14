@@ -170,7 +170,6 @@ export async function countDownBySecond(second: number, cb?: (time: number) => a
       }
 
       cb && cb(secondVal);
-      console.log("[-二维码倒计时-]", secondVal);
       secondVal--;
     }, 1000);
   });

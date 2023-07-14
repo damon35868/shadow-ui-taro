@@ -1,17 +1,35 @@
-import { atom, useAtom } from "jotai";
+import { atom, useAtom, createStore } from "jotai";
 import { setItem } from "./utils";
+import { log } from "./log";
+import { config } from "../config/instance";
 
 const tokenAtom = atom<null | string>(null);
 
-const userAuthAtom = atom<null | string>(null);
+const userAuthAtom = atom<boolean | undefined>(undefined);
 
 export function useToken() {
-  const [token, setTokenFn] = useAtom(tokenAtom);
+  const [token] = useAtom(tokenAtom);
+  return { token };
+}
 
-  const setToken = (accessToken: string) => {
-    setItem("token", accessToken);
-    setTokenFn(accessToken);
+export function setUserAuth(auth: boolean | undefined) {
+  const store = createStore();
+  setItem("userAuth", auth);
+  store.set(userAuthAtom, auth);
+}
+
+export function useInitToken() {
+  const [, setTokenFn] = useAtom(tokenAtom);
+
+  const setToken = (token: string) => {
+    if (!token) {
+      config.log && log.error("[缺少token]");
+      return;
+    }
+    setItem("token", token);
+    setTokenFn(token);
+    config.log && log.success("[配置TOKEN成功]");
   };
 
-  return { token, setToken };
+  return setToken;
 }
