@@ -6,6 +6,7 @@ export interface configTypes {
 
 export interface requestConfigType {
   baseUrl?: string;
+  wsUrl?: string;
   header?: TaroGeneral.IAnyObject;
   timeout?: number;
   bearerToken?: boolean;

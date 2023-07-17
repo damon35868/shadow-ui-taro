@@ -1,4 +1,5 @@
 import { clearStorageSync, getStorageSync, removeStorageSync, setStorageSync, reLaunch, showToast, uploadFile, navigateBack } from "@tarojs/taro";
+import { LocalStorageKeys } from "./enums";
 
 /**
  * 格式化日期
@@ -187,7 +188,7 @@ export const uploader = (url: string, filePath: string) => {
       name: "file",
       url,
       header: {
-        authorization: getItem("token") || null
+        authorization: getItem(LocalStorageKeys.token) || null
       },
 
       success: (res: any) => {

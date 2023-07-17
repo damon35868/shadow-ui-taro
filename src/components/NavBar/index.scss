@@ -1,0 +1,41 @@
+.sd_nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in;
+
+  .sd_nav-bar-content {
+    font-size: 31rpx;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .sd_nav-bar-back-parent {
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .sd_nav-bar-back-icon {
+        position: absolute;
+        left: 20rpx;
+        top: 50%;
+        width: 80rpx;
+        height: 80rpx;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        z-index: 999;
+      }
+    }
+
+    .sd_nav-bar-text {
+      position: absolute;
+      left: 50%;
+      color: #fff;
+      transform: translateX(-50%);
+    }
+  }
+}

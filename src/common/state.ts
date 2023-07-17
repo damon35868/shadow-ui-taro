@@ -2,6 +2,7 @@ import { atom, useAtom, createStore } from "jotai";
 import { setItem } from "./utils";
 import { log } from "./log";
 import { config } from "../config/instance";
+import { LocalStorageKeys } from "./enums";
 
 const tokenAtom = atom<null | string>(null);
 
@@ -26,7 +27,7 @@ export function useInitToken() {
       config.log && log.error("[缺少token]");
       return;
     }
-    setItem("token", token);
+    setItem(LocalStorageKeys.token, token);
     setTokenFn(token);
     config.log && log.success("[配置TOKEN成功]");
   };
