@@ -4,3 +4,4 @@ export * from "./request";
 export { useToken, setUserAuth } from "./state";
 export * from "./helper";
 export * from "./log";
+export * from "./ws";

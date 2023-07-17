@@ -9,32 +9,26 @@
 
   .sd_nav-bar-content {
     font-size: 31rpx;
-    font-weight: 600;
+    font-weight: 500;
     position: relative;
     display: flex;
     align-items: center;
     .sd_nav-bar-back-parent {
-      width: 25%;
+      width: 120rpx;
       height: 100%;
       display: flex;
       align-items: center;
       .sd_nav-bar-back-icon {
-        position: absolute;
-        left: 20rpx;
-        top: 50%;
-        width: 80rpx;
-        height: 80rpx;
-        display: flex;
-        align-items: center;
-        color: #fff;
+        padding-left: 10rpx;
+        width: 40rpx;
+        height: 40rpx;
         z-index: 999;
       }
     }
 
-    .sd_nav-bar-text {
+    .sd_nav-bar-title {
       position: absolute;
       left: 50%;
-      color: #fff;
       transform: translateX(-50%);
     }
   }

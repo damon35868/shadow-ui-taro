@@ -1,21 +1,20 @@
-import React, { FC, memo, useState } from "react";
+import React, { FC, ReactNode, memo, useState } from "react";
 import { usePageScroll } from "@tarojs/taro";
 import classNames from "classnames";
-import "./index.scss";
 import { routerBack, useSystemSize } from "../../common";
-import { Text, View } from "@tarojs/components";
-import "../../assets/iconfont/iconfont.css";
+import { Image, Text, View } from "@tarojs/components";
+import "./index.scss";
 
 interface NavBarProps {
   title?: string | null;
   style?: any;
-  iconStyle?: any;
+  icon?: ReactNode;
   scrollShow?: boolean;
   onBack?: () => any;
   showBack?: boolean;
 }
 
-export const NavBar: FC<NavBarProps> = memo(({ title = "", scrollShow, onBack, showBack = true, iconStyle = {} }) => {
+export const NavBar: FC<NavBarProps> = memo(({ title = "", scrollShow, onBack, showBack = true, icon, style = {} }) => {
   const [top, setTop] = useState(0);
   const isScroll = top >= 110;
   const { customNavHeight, statusBarHeight } = useSystemSize();
@@ -29,7 +28,8 @@ export const NavBar: FC<NavBarProps> = memo(({ title = "", scrollShow, onBack, s
       className={classNames("sd_nav-bar", { bg: isScroll })}
       style={{
         height: customNavHeight + "PX",
-        paddingTop: statusBarHeight + "PX"
+        paddingTop: statusBarHeight + "PX",
+        ...style
       }}
     >
       <View className='sd_nav-bar-content' style={{ height: customNavHeight - statusBarHeight + "PX" }}>
@@ -41,7 +41,11 @@ export const NavBar: FC<NavBarProps> = memo(({ title = "", scrollShow, onBack, s
               routerBack();
             }}
           >
-            <View className='sd_nav-bar-back-icon iconfont icon-a-fanhui2x' style={{ transform: "translateY(-50%)", ...iconStyle }} />
+            {!icon ? (
+              <Image className='sd_nav-bar-back-icon' src='https://cdn.wujuxian.net/static/7e44ce3ab64d4b95911ab66ef529f30b1689579223343.png' />
+            ) : (
+              icon
+            )}
           </View>
         )}
 
